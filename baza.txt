@@ -1,0 +1,361 @@
+Numer skrzynki	Towar	Ilosc
+1	kondensator 470uf 50v	1
+1	Kondensator 47uf 50v	20
+1	kondensator 330uf 25v	5
+1	kondensator 10uf  10v	10
+1	Kondensator 1000 uf 25v	3
+1	Kondensator 470 uf 35v	2
+1	Kondensator 1000uf 35v	10
+1	Kondensator 1000uf 16v	13
+2	Kondensator 100uf 100v	6
+2	Kondensator 3300 uf 16v	11
+2	kondensator 3300 uf 35v	2
+2	kondensator 2200uf 16v	2
+3	kondensator 2200uf 16v	10
+3	Kondensator 220 uf 25v	5
+3	kondensator 100uf 16v	30
+3	kondensator 2200uf 6,3v	30
+3	stabilizator 12v 2a to220	2
+4	termostat 95stopni celsiusza	8
+4	ntc thermostat 130	1
+4	ntc thermostat 135	1
+4	Termostat 160 stopni	2
+5	przełącznik wahadłowy biały	8
+5	przełącznik wahadłowy czarny	14
+5	rezystor 5w 10omów	10
+6	triak bta12 600 bw st	8
+6	mostek prostowniczy 2 w10	20
+6	termostat bimetaliczny 250v 5a	4
+6	wzmacniacz operacyjny lm358	30
+7	potencjometry różne rodzaje	100
+7	transoptor pc 817csharp	30
+7	mikrofony małe	20
+7	głośniczki małe	20
+8	dioda prostownicza fr 107g	10
+8	dioda prostownicza 1n5399	10
+8	dioda prostownicza fr 207g	10
+8	Nec 555	20
+8	podstawa pod nec 555	20
+8	dioda prostownicza 1n5408	11
+8	triak btp41-600	5
+8	bezpieczniki szklane 3.5 ampera	10
+8	dioda  in 5822 shottky	5
+8	Dioda in shottky 5819	10
+8	dioda prostownicza 4148	10
+8	dioda prostownicza 1n4007	10
+9	rezystory smd od 1oma do jednego mega oma	1
+10	zamki elektryczne 12v	3
+10	elektrozawory 230v wysokotemperaturowe	2
+11	kondensator 470uf 25v	5
+11	kondensator 330uf 25v	5
+11	kondensator 100uf 25v	10
+11	kondensator 47uf 25v	10
+11	kondensator 22uf 25v	10
+11	Kondensator 1uf 50v	10
+11	Kondensator 047uf 50v	10
+11	Kondensator 10uf 50v	10
+11	Kondensator 22uf 50v	10
+11	Kondensator 4,7uf 50v	10
+11	Kondensator ceramiczny 1p	10
+11	Kondensator ceramiczny 100n	10
+11	Kondensator ceramiczny 47n	10
+11	Kondensator ceramiczny 68p	10
+11	Kondensator ceramiczny 30p	10
+11	Kondensator ceramiczny 4,7p	10
+11	Kondensator ceramiczny 68p	10
+11	Kondensator ceramiczny 30p	10
+11	Kondensator ceramiczny 47p	10
+11	Kondensator ceramiczny  68p	10
+11	Kondensator ceramiczny 120p	10
+11	Kondensator ceramiczny 220p	10
+11	Kondensator ceramiczny 680p	10
+11	Kondensator ceramiczny 1n	10
+11	Kondensator ceramiczny 3,3n	10
+11	Kondensator ceramiczny 4,7n	10
+11	Kondensator ceramiczny 6,8n	10
+11	Kondensator ceramiczny 10n	10
+11	Kondensator ceramiczny 22n	10
+11	Kondensator ceramiczny 33n	10
+11	Kondensator ceramiczny 22p	10
+11	Kondensator ceramiczny 470p	10
+11	Kondensator ceramiczny 330p	9
+12	Tranzystor a42\b331	10
+12	Tranzystor 2n\5401	10
+12	Tranzystor 2n\5551	10
+12	Tranzystors9018\g321	10
+12	Tranzystors9012\h331	10
+12	Tranzystor 945\p331	10
+12	Tranzystor sta \773\gk1	10
+12	Tranzystor 8050\d116	10
+12	Tranzystor a92\b331	10
+12	Tranzystor 2n\3906\128	10
+12	Tranzystor s9013\g138	10
+12	Tranzystor a1015\gr	10
+12	Tranzystor s8550\d116	10
+12	Tranzystor 2n\3904\1711	10
+12	Tranzystor bc337\-40	10
+12	Tranzystor c1815\gr331	10
+12	Tranzystor bc327\-40	10
+12	Tranzystor s9014\c116	10
+13	rezystor 2w 100r	10
+13	rezystor 2w 10r	10
+13	rezystor 2w 1r	10
+13	rezystor 2w 10k	10
+13	rezystor 2w 1k	10
+13	rezystor 2w 100k	10
+13	rezystor 2w 1m	10
+14	dioda prostownicza 2,7v	10
+14	dioda prostownicza 3,3v	10
+14	dioda prostownicza 5,1v	10
+14	dioda prostownicza 9,1v	10
+14	dioda prostownicza 7,5v	10
+14	dioda prostownicza 12v	10
+14	dioda prostownicza 15v	10
+14	dioda prostownicza 18v	10
+14	dioda prostownicza 24v	10
+14	dioda prostownicza 27v	10
+14	dioda prostownicza 9v	10
+14	dioda prostownicza 4007	10
+14	dioda prostownicza p1000 mic	10
+15	kondensator 22uf 16v	10
+15	kondensator 47uf  25v	10
+15	Kondensator 4,7uf 50v	10
+15	kondensator 10uf 25v	10
+15	kondensator 10uf 50v	10
+15	Kondensator 6,8uf 50v	10
+15	Kondensator 22uf 50v	10
+15	kondensator 100uf 235v	10
+15	Kondensator 2,2uf 50v	10
+15	kondensator 100uf 16v	10
+15	kondensator 33uf 16v	10
+15	kondensator 47uf 50v	10
+15	kondensator 22uf 25v	10
+16	Kondensator 0,1uf 50v	10
+16	Kondensator 33uf 25v	10
+16	kondensator 10uf 16v	10
+16	kondensator 47uf 35v	10
+16	kondensator 100uf 25v	10
+16	Kondensator 1uf 50v	10
+16	Kondensator 0,47uf 50v	10
+16	kondensator 47uf 16v	10
+16	Kondensator 3,3uf 50v	10
+16	kondensator 33uf 50v	10
+16	Kondensator 220 uf 16v	10
+17	ładowarki do 18650 płytki	5
+17	mostek gretza mb6s	10
+17	mostek gretza mb6f	10
+17	mostek gretza mb10s	10
+17	mostek gretza mb10f	10
+17	mostek gretza abs10	10
+17	mostek gretza db107s	10
+17	mostek gretza db157s	10
+17	mostek gretza db207s	10
+17	Tyrystor tyn1225rg	10
+Pudełko 1	tranzystor  2n222	35
+Pudełko 1	tranzystor   2n3904	35
+Pudełko 1	Tranzystor 2n3906	35
+Pudełko 1	tranzystor  2n5401	35
+Pudełko 1	tranzystor  2n5551	35
+Pudełko 1	tranzystor  a1015	35
+Pudełko 1	tranzystor  c1815	35
+Pudełko 1	tranzystor  c945	35
+Pudełko 1	tranzystor  s8050	35
+Pudełko 1	tranzystor  s8550	35
+Pudełko 1	tranzystor  s9012	35
+Pudełko 1	tranzystor  s9013	35
+Pudełko 1	tranzystor  s9014	35
+Pudełko 1	Tranzystor s9015	35
+Pudełko 1	tranzystor  bc327	35
+Pudełko 1	tranzystor bc337	35
+Pudełko 1	tranzystor  bc517	35
+Pudełko 1	tranzystor  bc547	35
+Pudełko 1	tranzystor  bc548	35
+Pudełko 1	tranzystor  bc549	35
+Pudełko 1	tranzystor  bc550	35
+Pudełko 1	tranzystor  bc556	35
+Pudełko 1	tranzystor bc557	35
+Pudełko 1	tranzystor bc558	35
+Pudełko 2	rezystory 5w 0.1R	5
+Pudełko 2	rezystory 5w 2R7	5
+Pudełko 2	rezystory 5w 10R	5
+Pudełko 2	rezystory 5w 47R	5
+Pudełko 2	rezystory 5w 270R	5
+Pudełko 2	rezystory 5w 0,33R	5
+Pudełko 2	rezystory 5w 3R3	5
+Pudełko 27	rezystory 5w 15R	5
+Pudełko 2	rezystory 5w 56R	5
+Pudełko 2	rezystory 5w 330R	5
+Pudełko 2	rezystory 5w 0,5R	5
+Pudełko 2	rezystory 5w 3R9	5
+Pudełko 2	rezystory 5w  20R	5
+Pudełko 2	rezystory 5w 75R	5
+Pudełko 2	rezystory 5w 390R	5
+Pudełko 2	rezystory 5w 1R	5
+Pudełko 2	rezystory 5w 5R6	5
+Pudełko 2	rezystory 5w 33R	5
+Pudełko 2	rezystory 5w 150R	5
+Pudełko 2	rezystory 5w 560R	5
+Pudełko 2	rezystory 5w 2R	5
+Pudełko 2	rezystory 5w 7R5	5
+Pudełko 2	rezystory 5w 39R	5
+Pudełko 2	rezystory 5w 200R	5
+Pudełko 2	rezystory 5w 750R	5
+Pudełko 3	kondensator  10v 1000uf	10
+Pudełko 3	kondensator  16v 47uf	30
+Pudełko 3	kondensator  16v 100uf	20
+Pudełko 3	kondensator  16v 220uf	20
+Pudełko 3	kondensator  16v 330uf	20
+Pudełko 3	kondensator  16v  470uf	10
+Pudełko 3	kondensator  16v 1000uf	10
+Pudełko 3	kondensator  16v  2200uf	5
+Pudełko 3	kondensator 25v  22uf	30
+Pudełko 3	kondensator  25v 100uf	20
+Pudełko 3	kondensator  25v 220uf	20
+Pudełko 3	kondensator 25v  1000uf	10
+Pudełko 3	kondensator 35v   47uf	30
+Pudełko 3	kondensator 35v   100uf	20
+Pudełko 3	kondensator 35v   220uf	10
+Pudełko 3	kondensator 35v   470uf	10
+Pudełko 3	kondensator 50v   1uf	30
+Pudełko 3	kondensator 50v   10uf	30
+Pudełko 3	kondensator 50v   22uf	30
+Pudełko 3	kondensator 50v   47uf	20
+Pudełko 3	kondensator 50v   100uf	10
+Pudełko 3	kondensator 50v   470uf	5
+Pudełko 3	kondensator 50v   680uf	5
+Pudełko 3	kondensator 50v  1000 uf	5
+Pudełko 4	mosfet transistor kit irf 840	5
+Pudełko 4	mosfet transistor kit irf 730	5
+Pudełko 4	mosfet transistor kit irf 640	5
+Pudełko 4	mosfet transistor kit irf 3710	5
+Pudełko 4	mosfet transistor kit irf 630	5
+Pudełko 4	mosfet transistor kit irf 530	5
+Pudełko 4	mosfet transistor kit irf 740	5
+Pudełko 4	mosfet transistor kit irf 3205	5
+Pudełko 4	mosfet transistor kit irf 9z24n	5
+Pudełko 4	mosfet transistor kit irf 540	5
+Pudełko 4	mosfet transistor kit irf 5210	5
+Pudełko 4	mosfet transistor kit irf 9530	5
+Pudełko 4	mosfet transistor kit irf  9540	5
+Pudełko 4	mosfet transistor kit irf z44n	5
+Pudełko 4	mosfet transistor kit irf 1010	5
+skrzynka 1	pajaki	2
+szkrzynka 4	Wentylator 230v do gniazdka na komary	1
+szkrzynka 4	5 zapalniczek	5
+szkrzynka 4	gumki do silikonu	10
+szkrzynka 4	cisnieniomierz	1
+szkrzynka 4	okulary do szlifowania	1
+szkrzynka 4	wąż pneumatyczny	1
+szkrzynka 4	bat. do dmuchawy	2
+szkrzynka 4	tasma do zzaklejania wody	1
+szkrzynka 4	uchwyt kabla gwórzdz	10
+szkrzynka 4	blaszki magnetyczne	2
+szkrzynka 4	poduszka do podnoszenia	1
+szkrzynka 4	marker	2
+szkrzynka 4	sprężarka vacum	1
+szkrzynka 4	ventylatory do pc 5	5
+Szkrzynka 5	skrzynak (skrzynka)	1
+Szkrzynka 5	karta dvbt	2
+szkrzynka 5	czytnik kart	2
+szkrzynka 5	karta wifi	2
+szkrzynka 5	pendriv uszkodzony	1
+szkrzynka 5	wirtualna klawiatura	1
+szkrzynka 5	różdżki antyzjacyjne (antystatyczne / jonizacyjne)	2
+szkrzynka 5	magnes z lampka	1
+szkrzynka 5	wentylatory 2 do pc	2
+szkrzynka 5	poziomica	1
+szkrzynka 5	tabletki pu	4
+Szkrzynka 5	pad xbox360	1
+Szkrzynka 5	mikrofon	1
+szkrzynka 5	hdmi spliter + zasilacz	1
+szkrzynka 5	tesla do mycia woda	1
+szkrzynka 5	do pc do wodnego chłodzenia	1
+szkrzynka 5	zgrzewarka	1
+Szkrzynka 6	płyty cd	50
+Szkrzynka 6	gniazda ethernet 5e 2szt	2
+Szkrzynka 6	gniazda ethernet 6cat 2 szt	2
+Szkrzynka 6	pas narzędziowy i skocz (taśma scotche)	1
+Szkrzynka 6	dwie myszki	1
+Szkrzynka 6	radio dmr 750	2
+Szkrzynka 6	magnesy antenowe 2 szt	2
+Szkrzynka 6	anteny wifi 2 szt	1
+Szkrzynka 6	antena do radia 2m	1
+Szkrzynka 6	ładowarka qi (bezprzewodowa)	1
+Szkrzynka 6	kółka do szafy fi 100	1
+Szkrzynka 7	kabel do adowania 2,5x0.7	2
+Szkrzynka 7	kabel miedziany 2.5 drut około metra	3
+Szkrzynka 7	kabel sieciowy 50cm z wtyczkami	2
+Szkrzynka 7	kabel do zasilania pc	1
+Szkrzynka 7	kabel dvi-dvi	1
+Szkrzynka 7	do czujnika 8mm	1
+Szkrzynka 7	mickro usb	1
+Szkrzynka 7	Usb-c	1
+Szkrzynka 7	Usb-b	1
+Szkrzynka 7	Tyt-kable do programowania	2
+Szkrzynka 7	kable do zsilacza	1
+Szkrzynka 7	kable sata dysk	6
+Szkrzynka 7	kable do miernika	4
+Szkrzynka 7	kontrolka do sprawdzenia napięcia	1
+Szkrzynka 7	stojak pod telefon	1
+Szkrzynka 77	dmuchawa ręczna	1
+Szkrzynka 7	Zasialcz 7,5v	1
+Szkrzynka 7	zasialcz 5v	2
+Szkrzynka 7	zasilacz 9v	2
+Szkrzynka 7	zasilacz nask	1
+Szkrzynka 7	do kopiowania danych ata sata +zasialcz	1
+Szkrzynka 7	zasilacz 15v	1
+Szkrzynka 7	Zasialcz 12v 3a	1
+Szkrzynka 7	przedłużacz jack damsko męski	1
+Szkrzynka 8	kabel rs232-rs232	1
+Szkrzynka 8	przedłużacz jack jack	2
+Szkrzynka 8	Usb-rs232	2
+Szkrzynka 8	przedłużacz usb damsko męski	1
+Szkrzynka 8	tyt-kable do programowania 398	1
+Szkrzynka 8	tyt słuchawki 398 tyt	1
+Szkrzynka 8	ładowarka do samochodu tyt 398	1
+Szkrzynka 8	tyt gruszka 398	1
+Szkrzynka 8	kabel miedziany 10mmkwadrat około 1m	1
+Szkrzynka 8	kabel do programowania motorola	1
+Szkrzynka 8	kabel jack duży męski -męski	2
+Szkrzynka 8	skrzyneczka metalowa mała	1
+Szkrzynka 8	poverbank	1
+Szkrzynka 8	nici do szycia z igła	8
+Szkrzynka 8	zestaw do czyszczenia łańcucha w rowerze	1
+Szkrzynka 8	tarcza do slifowania	1
+Szkrzynka 8	papier scierny p150	1
+Szkrzynka 8	sprężyny do drzwi	2
+Szkrzynka 8	cybanty do anteny na zew	2
+Szkrzynka 8	Tarcza do cięcia	3
+Szkrzynka 8	papier wodny p 2000	1
+Szkrzynka 8	spręzyna do zabezp.ładunku	1
+Szkrzynka 8	tarcza do cięcia szkła	1
+Szkrzynka 8	paierosy opakowania	4
+Szkrzynka 9	do naprawy  telefonu zaciski żabki podkładki srubokręty drut itp. całe pudełko	1
+Szkrzynka 9	długopisy scieralne	7
+Szkrzynka 9	wkłady do długopisów ścieralnych	130
+Szkrzynka 9	msika magnetyczna	2
+Szkrzynka 9	zszywacz mały	1
+Szkrzynka 9	lupa mała	1
+Szkrzynka 9	nóż	1
+Szkrzynka 9	cyrkiel	1
+Szkrzynka 9	zawór do łazienki	1
+Szkrzynka 9	gniazdko nadtykowe	1
+Szkrzynka 9	kabel moler sata	1
+Szkrzynka 9	wydruki 3d	1
+Szkrzynka 9	do odkrecania butelek	1
+Szkrzynka 9	pasta do rąk	2
+Szkrzynka 9	torebka z elektroniką różną	1
+Szkrzynka 10	laptop lenovo w510	1
+Szkrzynka 10	laptop lenovo w230	1
+Szkrzynka 10	opakowanie do okularów	2
+Szkrzynka 10	plastki do sadzenia na działke	12
+Szkrzynka 10	czujnik dymu	1
+Szkrzynka 10	pieczątka w 50	1
+Szkrzynka 10	pistolet do powietrza	1
+Szkrzynka 10	find key	1
+Szkrzynka 10	papier scierny p320	20
+Szkrzynka 10	pilniki iglaki	8
+Szkrzynka 10	kolanka miedziane	20
+Szkrzynka 10	klej budapren	2
+Szkrzynka 11	mikser +wzmacniacz 200w	1
+

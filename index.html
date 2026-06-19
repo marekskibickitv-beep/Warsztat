@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizer Warsztatowy</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background: #f0f2f5; padding: 10px; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { text-align: center; font-size: 1.5rem; margin-bottom: 15px; color: #0056b3; }
+        
+        /* Sekcja wyszukiwania i dodawania */
+        .row { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        input, select { padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; flex: 1; min-width: 120px; }
+        .btn { padding: 10px 15px; border: none; border-radius: 5px; background: #007bff; color: white; font-size: 1rem; cursor: pointer; }
+        .btn:hover { background: #0056b3; }
+        .btn-danger { background: #dc3545; }
+        .btn-danger:hover { background: #bd2130; }
+        
+        /* Zakładki (Kategorie) */
+        .tabs { display: flex; overflow-x: auto; gap: 5px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #007bff; }
+        .tab { padding: 8px 15px; background: #e4e6eb; border: none; border-radius: 5px 5px 0 0; cursor: pointer; white-space: nowrap; font-weight: bold; }
+        .tab.active { background: #007bff; color: white; }
+        
+        /* Tabela / Lista elementów */
+        .item-list { display: flex; flex-direction: column; gap: 10px; }
+        .item-card { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; }
+        .item-info { flex: 1; }
+        .item-loc { font-size: 0.85rem; color: #6c757d; font-weight: bold; }
+        .item-name { font-size: 1.1rem; margin: 2px 0; }
+        .item-qty-zone { display: flex; align-items: center; gap: 10px; }
+        .qty-btn { width: 35px; height: 35px; border: none; border-radius: 5px; background: #6c757d; color: white; font-size: 1.2rem; cursor: pointer; }
+        .qty-val { font-size: 1.2rem; font-weight: bold; min-width: 30px; text-align: center; }
+        
+        /* Sekcja kopii zapasowej */
+        .backup-zone { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; display: flex; gap: 10px; justify-content: center; }
+        .file-label { padding: 10px; background: #28a745; color: white; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Organizer Warsztatowy</h1>
+    
+    <div class="row">
+        <input type="text" id="search" placeholder="Szukaj elementu lub lokalizacji..." oninput="updateList()">
+    </div>
+    
+    <div class="row">
+        <input type="text" id="newLoc" placeholder="Lok (np. Szuflada 1)">
+        <input type="text" id="newName" placeholder="Nazwa elementu">
+        <input type="text" id="newQty" placeholder="Ilość" type="number" value="1">
+        <button class="btn" onclick="addItem()">Dodaj</button>
+    </div>
+    
+    <div id="tabs" class="tabs"></div>
+    
+    <div id="itemList" class="item-list"></div>
+    
+    <div class="backup-zone">
+        <button class="btn" style="background:#17a2b8" onclick="exportToTxt()">Pobierz baza.txt</button>
+        <label class="file-label">
+            Wgraj baza.txt <input type="file" id="importFile" accept=".txt" style="display:none" onchange="importFromTxt(this)">
+        </label>
+        <button class="btn btn-danger" onclick="clearAllData()">Reset bazy</button>
+    </div>
+</div>
+
+<script>
+const KATEGORIE = ["Wszystko", "Kondensatory", "Tranzystory", "Rezystory", "Diody", "Skrzynki warsztatowe", "Inne / Różne"];
+let bazy_danych = [];
+let aktualnaKategoria = "Wszystko";
+
+// Start programu
+window.onload = function() {
+    initTabs();
+    loadFromServer();
+};
+
+// Automatyczne pobieranie pliku baza.txt z tego samego serwera
+function loadFromServer() {
+    fetch('baza.txt')
+        .then(response => {
+            if (!response.ok) throw new Error('Brak pliku baza.txt na serwerze lub błąd połączenia');
+            return response.text();
+        })
+        .then(text => {
+            parsujTxt(text);
+            console.log("Baza została pomyślnie załadowana z serwera.");
+        })
+        .catch(error => {
+            console.log(error.message + " -> Ładuję zapas z pamięci lokalnej.");
+            loadFromLocalStorage();
+            updateList();
+        });
+}
+
+// Wspólny analizator składni pliku tekstowego
+function parsujTxt(text) {
+    const lines = text.split(/\r?\n/);
+    const nowaBaza = [];
+
+    lines.forEach(line => {
+        if (!line.trim()) return;
+        const lineLower = line.toLowerCase();
+        
+        if (line.includes("#ARG!") || line.includes("[source") || 
+            lineLower.includes("numer") || lineLower.includes("skrzynki")) {
+            return;
+        }
+
+        let parts = [];
+        if (line.includes("\t")) {
+            parts = line.split("\t").map(p => p.trim()).filter(p => p);
+        } else {
+            parts = line.trim().split(/\s+/).map(p => p.trim());
+        }
+
+        if (parts.length >= 2) {
+            let item = { drawer: "", name: "", qty: "1" };
+            
+            if (parts[0] === "skrzynka" && parts.length > 2 && /^\d+$/.test(parts[1])) {
+                item.drawer = parts[0] + " " + parts[1];
+                item.name = parts.slice(2).join(" ").trim();
+            } else {
+                item.drawer = parts[0];
+                item.name = parts.slice(1).join(" ").trim();
+            }
+
+            let lastPart = parts[parts.length - 1];
+            if (parts.length > 2 && /^\d+$/.test(lastPart)) {
+                item.qty = lastPart;
+                let pIdx = item.name.lastIndexOf(" ");
+                if (pIdx !== -1) {
+                    item.name = item.name.substring(0, pIdx).trim();
+                }
+            }
+
+            if (item.name.toLowerCase() !== "towar" && item.name) {
+                nowaBaza.push(item);
+            }
+        }
+    });
+
+    if (nowaBaza.length > 0) {
+        bazy_danych = nowaBaza;
+        saveToLocalStorage();
+        updateList();
+    }
+}
+
+// Inicjalizacja zakładek kategorii
+function initTabs() {
+    const tabsContainer = document.getElementById("tabs");
+    tabsContainer.innerHTML = "";
+    KATEGORIE.forEach(kat => {
+        const btn = document.createElement("button");
+        btn.className = "tab" + (kat === aktualnaKategoria ? " active" : "");
+        btn.innerText = kat;
+        btn.onclick = () => {
+            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+            btn.classList.add("active");
+            aktualnaKategoria = kat;
+            updateList();
+        };
+        tabsContainer.appendChild(btn);
+    });
+}
+
+// Przypisywanie kategorii (identycznie jak w C++)
+function getCategory(item) {
+    const name = item.name.toLowerCase();
+    const loc = item.drawer.toLowerCase();
+
+    if (name.includes("kond") || name.includes("cap")) return "Kondensatory";
+    if (name.includes("tranz") || name.includes("mosfet") || name.includes("triak")) return "Tranzystory";
+    if (name.includes("rez") || name.includes("opór") || name.includes("opor")) return "Rezystory";
+    if (name.includes("diod")) return "Diody";
+    if (loc.includes("szkrzynka") || loc.includes("skrzynka") || loc.includes("szafa")) return "Skrzynki warsztatowe";
+    return "Inne / Różne";
+}
+
+// Odświeżanie widoku listy
+function updateList() {
+    const listContainer = document.getElementById("itemList");
+    listContainer.innerHTML = "";
+    const searchText = document.getElementById("search").value.toLowerCase();
+
+    bazy_danych.forEach((item, index) => {
+        if (aktualnaKategoria !== "Wszystko" && getCategory(item) !== aktualnaKategoria) return;
+        if (searchText && !item.name.toLowerCase().includes(searchText) && !item.drawer.toLowerCase().includes(searchText)) return;
+
+        const card = document.createElement("div");
+        card.className = "item-card";
+        card.innerHTML = `
+            <div class="item-info">
+                <div class="item-loc">${item.drawer}</div>
+                <div class="item-name">${item.name}</div>
+            </div>
+            <div class="item-qty-zone">
+                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                <div class="qty-val">${item.qty}</div>
+                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+            </div>
+        `;
+        listContainer.appendChild(card);
+    });
+}
+
+// Dodawanie elementu ręcznie z poziomu strony
+function addItem() {
+    const locInput = document.getElementById("newLoc");
+    const nameInput = document.getElementById("newName");
+    const qtyInput = document.getElementById("newQty");
+
+    const drawer = locInput.value.trim();
+    const name = nameInput.value.trim();
+    let qty = parseInt(qtyInput.value.trim()) || 1;
+
+    if (!drawer || !name) {
+        alert("Pola 'Lok' i 'Nazwa' nie mogą być puste!");
+        return;
+    }
+    if (qty < 0) qty = 0;
+
+    bazy_danych.push({ drawer, name, qty: qty.toString() });
+    
+    locInput.value = "";
+    nameInput.value = "";
+    qtyInput.value = "1";
+
+    saveToLocalStorage();
+    updateList();
+}
+
+// Modyfikacja stanu ilości sztuk
+function changeQty(index, delta) {
+    let currentQty = parseInt(bazy_danych[index].qty) || 0;
+    currentQty += delta;
+    if (currentQty < 0) currentQty = 0;
+    
+    bazy_danych[index].qty = currentQty.toString();
+    saveToLocalStorage();
+    updateList();
+}
+
+function saveToLocalStorage() {
+    localStorage.setItem("baza_warsztat", JSON.stringify(bazy_danych));
+}
+
+function loadFromLocalStorage() {
+    const data = localStorage.getItem("baza_warsztat");
+    bazy_danych = data ? JSON.parse(data) : [];
+}
+
+function clearAllData() {
+    if (confirm("Czy na pewno chcesz wyczyścić pamięć lokalną?")) {
+        bazy_danych = [];
+        saveToLocalStorage();
+        updateList();
+    }
+}
+
+// Ręczny eksport do pliku tekstowego
+function exportToTxt() {
+    if (bazy_danych.length === 0) {
+        alert("Baza danych jest pusta.");
+        return;
+    }
+    let output = "Numer skrzynki\tTowar\tIlosc\r\n";
+    bazy_danych.forEach(item => {
+        output += `${item.drawer}\t${item.name}\t${item.qty}\r\n`;
+    });
+
+    const blob = new Blob([output], { type: "text/plain;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "baza.txt";
+    a.click();
+}
+
+// Ręczny import pliku przez użytkownika
+function importFromTxt(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        parsujTxt(e.target.result);
+    };
+    reader.readAsText(file, "UTF-8");
+    input.value = "";
+}
+</script>
+</body>
+</html>
