@@ -3,294 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizer Warsztatowy</title>
+    <title>Panel Główny - Warsztat</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
-        body { background: #f0f2f5; padding: 10px; color: #333; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h1 { text-align: center; font-size: 1.5rem; margin-bottom: 15px; color: #0056b3; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { background: #0d1117; color: #c9d1d9; padding: 40px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 2.2rem; color: #f0f6fc; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        h2 { font-size: 1.4rem; color: #f0f6fc; margin-bottom: 15px; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 25px; margin-bottom: 20px; }
         
-        /* Sekcja wyszukiwania i dodawania */
-        .row { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
-        input, select { padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; flex: 1; min-width: 120px; }
-        .btn { padding: 10px 15px; border: none; border-radius: 5px; background: #007bff; color: white; font-size: 1rem; cursor: pointer; }
-        .btn:hover { background: #0056b3; }
-        .btn-danger { background: #dc3545; }
-        .btn-danger:hover { background: #bd2130; }
+        /* Przyciski */
+        .btn { padding: 12px 20px; background: #238636; border: 1px solid rgba(240,246,252,0.1); color: #fff; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; transition: background 0.2s; }
+        .btn:hover { background: #2ea043; }
+        .btn-nav { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; margin-right: 10px; }
+        .btn-nav:hover { background: #30363d; color: #58a6ff; }
         
-        /* Zakładki (Kategorie) */
-        .tabs { display: flex; overflow-x: auto; gap: 5px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #007bff; }
-        .tab { padding: 8px 15px; background: #e4e6eb; border: none; border-radius: 5px 5px 0 0; cursor: pointer; white-space: nowrap; font-weight: bold; }
-        .tab.active { background: #007bff; color: white; }
-        
-        /* Tabela / Lista elementów */
-        .item-list { display: flex; flex-direction: column; gap: 10px; }
-        .item-card { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; }
-        .item-info { flex: 1; }
-        .item-loc { font-size: 0.85rem; color: #6c757d; font-weight: bold; }
-        .item-name { font-size: 1.1rem; margin: 2px 0; }
-        .item-qty-zone { display: flex; align-items: center; gap: 10px; }
-        .qty-btn { width: 35px; height: 35px; border: none; border-radius: 5px; background: #6c757d; color: white; font-size: 1.2rem; cursor: pointer; }
-        .qty-val { font-size: 1.2rem; font-weight: bold; min-width: 30px; text-align: center; }
-        
-        /* Sekcja kopii zapasowej */
-        .backup-zone { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; display: flex; gap: 10px; justify-content: center; }
-        .file-label { padding: 10px; background: #28a745; color: white; border-radius: 5px; cursor: pointer; }
+        /* Statusy i Siatka Podglądu */
+        .status-box { padding: 10px; background: #0d1117; border-radius: 6px; border: 1px solid #30363d; margin-top: 15px; font-size: 0.9rem; color: #8b949e; }
+        .grid-podglad { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+        .item-mini { background: #0d1117; border: 1px solid #30363d; padding: 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; }
+        .item-qty { color: #58a6ff; font-weight: bold; font-family: monospace; }
     </style>
 </head>
 <body>
+
 <div class="container">
-    <h1>Organizer Warsztatowy</h1>
-    
-    <div class="row">
-        <input type="text" id="search" placeholder="Szukaj elementu lub lokalizacji..." oninput="updateList()">
+    <h1>🎛️ Panel Zarządzania Warsztatem</h1>
+
+    <!-- Sekcja Kontrolna -->
+    <div class="card">
+        <h2>Nawigacja i Synchronizacja</h2>
+        <p style="margin-bottom: 15px; color: #8b949e;">Zarządzaj połączeniem z zewnętrzną bazą danych części.</p>
+        <a href="magazynek.html" class="btn btn-nav">📦 Otwórz Pełny Magazynek</a>
+        <button onclick="wymusAktualizacjeZGitHub()" class="btn">🔄 Synchronizuj z GitHub</button>
+        
+        <div id="syncStatus" class="status-box">Ładowanie bazy danych...</div>
     </div>
-    
-    <div class="row">
-        <input type="text" id="newLoc" placeholder="Lok (np. Szuflada 1)">
-        <input type="text" id="newName" placeholder="Nazwa elementu">
-        <input type="text" id="newQty" placeholder="Ilość" type="number" value="1">
-        <button class="btn" onclick="addItem()">Dodaj</button>
-    </div>
-    
-    <div id="tabs" class="tabs"></div>
-    
-    <div id="itemList" class="item-list"></div>
-    
-    <div class="backup-zone">
-        <button class="btn" style="background:#17a2b8" onclick="exportToTxt()">Pobierz baza.txt</button>
-        <label class="file-label">
-            Wgraj baza.txt <input type="file" id="importFile" accept=".txt" style="display:none" onchange="importFromTxt(this)">
-        </label>
-        <button class="btn btn-danger" onclick="clearAllData()">Reset bazy</button>
+
+    <!-- Sekcja dynamicznego podglądu danych z GitHuba -->
+    <div class="card">
+        <h2>Szybki Podgląd Stanów (z pliku baza.json)</h2>
+        <div id="podgladZawartosci" class="grid-podglad">
+            <!-- Stare, fikcyjne dane zostały usunięte. Tutaj JS wstrzyknie dane z GitHuba -->
+        </div>
     </div>
 </div>
 
 <script>
-const KATEGORIE = ["Wszystko", "Kondensatory", "Tranzystory", "Rezystory", "Diody", "Skrzynki warsztatowe", "Inne / Różne"];
-let bazy_danych = [];
-let aktualnaKategoria = "Wszystko";
+    // 1. WKLEJ TUTAJ SWÓJ LINK RAW Z GITHUB
+    const URL_BAZY = "https://raw.githubusercontent.com/TWÓJ_LOGIN/TWÓJ_REPOZYTORIUM/main/baza.json";
 
-// Start programu
-window.onload = function() {
-    initTabs();
-    loadFromServer();
-};
+    // Główna funkcja pobierająca i odświeżająca widok na stronie głównej
+    async function wczytajBazeNaStroneGlowna(wymus = false) {
+        const statusBox = document.getElementById("syncStatus");
+        let parts = [];
 
-// Automatyczne pobieranie pliku baza.txt z tego samego serwera
-function loadFromServer() {
-    fetch('baza.txt')
-        .then(response => {
-            if (!response.ok) throw new Error('Brak pliku baza.txt na serwerze lub błąd połączenia');
-            return response.text();
-        })
-        .then(text => {
-            parsujTxt(text);
-            console.log("Baza została pomyślnie załadowana z serwera.");
-        })
-        .catch(error => {
-            console.log(error.message + " -> Ładuję zapas z pamięci lokalnej.");
-            loadFromLocalStorage();
-            updateList();
-        });
-}
-
-// Wspólny analizator składni pliku tekstowego
-function parsujTxt(text) {
-    const lines = text.split(/\r?\n/);
-    const nowaBaza = [];
-
-    lines.forEach(line => {
-        if (!line.trim()) return;
-        const lineLower = line.toLowerCase();
-        
-        if (line.includes("#ARG!") || line.includes("[source") || 
-            lineLower.includes("numer") || lineLower.includes("skrzynki")) {
+        // Próba odczytu z localStorage, jeśli nie wymuszamy pobierania z sieci
+        if (!wymus && localStorage.getItem("magazynek_parts")) {
+            parts = JSON.parse(localStorage.getItem("magazynek_parts"));
+            statusBox.innerHTML = "✅ Załadowano aktualne dane z pamięci podręcznej.";
+            renderujPodglad(parts);
             return;
         }
 
-        let parts = [];
-        if (line.includes("\t")) {
-            parts = line.split("\t").map(p => p.trim()).filter(p => p);
-        } else {
-            parts = line.trim().split(/\s+/).map(p => p.trim());
-        }
-
-        if (parts.length >= 2) {
-            let item = { drawer: "", name: "", qty: "1" };
+        try {
+            statusBox.innerHTML = "⏳ Pobieranie świeżych danych z GitHub...";
+            const odpowiedz = await fetch(URL_BAZY);
+            if (!odpowiedz.ok) throw new Error('Błąd pobierania pliku');
             
-            if (parts[0] === "skrzynka" && parts.length > 2 && /^\d+$/.test(parts[1])) {
-                item.drawer = parts[0] + " " + parts[1];
-                item.name = parts.slice(2).join(" ").trim();
-            } else {
-                item.drawer = parts[0];
-                item.name = parts.slice(1).join(" ").trim();
-            }
-
-            let lastPart = parts[parts.length - 1];
-            if (parts.length > 2 && /^\d+$/.test(lastPart)) {
-                item.qty = lastPart;
-                let pIdx = item.name.lastIndexOf(" ");
-                if (pIdx !== -1) {
-                    item.name = item.name.substring(0, pIdx).trim();
-                }
-            }
-
-            if (item.name.toLowerCase() !== "towar" && item.name) {
-                nowaBaza.push(item);
-            }
+            parts = await odpowiedz.json();
+            
+            // Nadpisujemy lokalną pamięć rzeczywistymi danymi
+            localStorage.setItem("magazynek_parts", JSON.stringify(parts));
+            statusBox.innerHTML = `✅ Zsynchronizowano pomyślnie! Wczytano elementów: ${parts.length}.`;
+            
+            renderujPodglad(parts);
+        } catch (err) {
+            console.error(err);
+            statusBox.innerHTML = "❌ Błąd pobierania z GitHub. Używam ostatnich znanych danych.";
+            
+            // Awaryjne wyświetlenie tego co jest w pamięci
+            parts = JSON.parse(localStorage.getItem("magazynek_parts")) || [];
+            renderujPodglad(parts);
         }
-    });
-
-    if (nowaBaza.length > 0) {
-        bazy_danych = nowaBaza;
-        saveToLocalStorage();
-        updateList();
     }
-}
 
-// Inicjalizacja zakładek kategorii
-function initTabs() {
-    const tabsContainer = document.getElementById("tabs");
-    tabsContainer.innerHTML = "";
-    KATEGORIE.forEach(kat => {
-        const btn = document.createElement("button");
-        btn.className = "tab" + (kat === aktualnaKategoria ? " active" : "");
-        btn.innerText = kat;
-        btn.onclick = () => {
-            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-            btn.classList.add("active");
-            aktualnaKategoria = kat;
-            updateList();
-        };
-        tabsContainer.appendChild(btn);
-    });
-}
+    // Generowanie kafelków podglądu na bazie realnych danych
+    function renderujPodglad(listaCzesci) {
+        const kontener = document.getElementById("podgladZawartosci");
+        kontener.innerHTML = ""; // Czyszczenie widoku
 
-// Przypisywanie kategorii (identycznie jak w C++)
-function getCategory(item) {
-    const name = item.name.toLowerCase();
-    const loc = item.drawer.toLowerCase();
+        if (listaCzesci.length === 0) {
+            kontener.innerHTML = "<p style='color: #8b949e; grid-column: 1/-1;'>Baza danych jest pusta lub nie została załadowana.</p>";
+            return;
+        }
 
-    if (name.includes("kond") || name.includes("cap")) return "Kondensatory";
-    if (name.includes("tranz") || name.includes("mosfet") || name.includes("triak")) return "Tranzystory";
-    if (name.includes("rez") || name.includes("opór") || name.includes("opor")) return "Rezystory";
-    if (name.includes("diod")) return "Diody";
-    if (loc.includes("szkrzynka") || loc.includes("skrzynka") || loc.includes("szafa")) return "Skrzynki warsztatowe";
-    return "Inne / Różne";
-}
+        // Wyświetlamy np. pierwsze 8 elementów jako szybki podgląd w panelu
+        const doWyswietlenia = listaCzesci.slice(0, 8);
 
-// Odświeżanie widoku listy
-function updateList() {
-    const listContainer = document.getElementById("itemList");
-    listContainer.innerHTML = "";
-    const searchText = document.getElementById("search").value.toLowerCase();
+        doWyswietlenia.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "item-mini";
+            div.innerHTML = `
+                <span>${item.name}</span>
+                <span class="item-qty">${item.qty} szt.</span>
+            `;
+            kontener.appendChild(div);
+        });
 
-    bazy_danych.forEach((item, index) => {
-        if (aktualnaKategoria !== "Wszystko" && getCategory(item) !== aktualnaKategoria) return;
-        if (searchText && !item.name.toLowerCase().includes(searchText) && !item.drawer.toLowerCase().includes(searchText)) return;
-
-        const card = document.createElement("div");
-        card.className = "item-card";
-        card.innerHTML = `
-            <div class="item-info">
-                <div class="item-loc">${item.drawer}</div>
-                <div class="item-name">${item.name}</div>
-            </div>
-            <div class="item-qty-zone">
-                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
-                <div class="qty-val">${item.qty}</div>
-                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
-            </div>
-        `;
-        listContainer.appendChild(card);
-    });
-}
-
-// Dodawanie elementu ręcznie z poziomu strony
-function addItem() {
-    const locInput = document.getElementById("newLoc");
-    const nameInput = document.getElementById("newName");
-    const qtyInput = document.getElementById("newQty");
-
-    const drawer = locInput.value.trim();
-    const name = nameInput.value.trim();
-    let qty = parseInt(qtyInput.value.trim()) || 1;
-
-    if (!drawer || !name) {
-        alert("Pola 'Lok' i 'Nazwa' nie mogą być puste!");
-        return;
+        if (listaCzesci.length > 8) {
+            const info = document.createElement("p");
+            info.style.cssText = "grid-column: 1/-1; color: #8b949e; font-size: 0.85rem; margin-top: 10px;";
+            info.innerHTML = `...oraz ${listaCzesci.length - 8} innych pozycji. Pełną listę znajdziesz w zakładce Magazynek.`;
+            kontener.appendChild(info);
+        }
     }
-    if (qty < 0) qty = 0;
 
-    bazy_danych.push({ drawer, name, qty: qty.toString() });
-    
-    locInput.value = "";
-    nameInput.value = "";
-    qtyInput.value = "1";
-
-    saveToLocalStorage();
-    updateList();
-}
-
-// Modyfikacja stanu ilości sztuk
-function changeQty(index, delta) {
-    let currentQty = parseInt(bazy_danych[index].qty) || 0;
-    currentQty += delta;
-    if (currentQty < 0) currentQty = 0;
-    
-    bazy_danych[index].qty = currentQty.toString();
-    saveToLocalStorage();
-    updateList();
-}
-
-function saveToLocalStorage() {
-    localStorage.setItem("baza_warsztat", JSON.stringify(bazy_danych));
-}
-
-function loadFromLocalStorage() {
-    const data = localStorage.getItem("baza_warsztat");
-    bazy_danych = data ? JSON.parse(data) : [];
-}
-
-function clearAllData() {
-    if (confirm("Czy na pewno chcesz wyczyścić pamięć lokalną?")) {
-        bazy_danych = [];
-        saveToLocalStorage();
-        updateList();
+    function wymusAktualizacjeZGitHub() {
+        wczytajBazeZGitHubu(true); 
     }
-}
 
-// Ręczny eksport do pliku tekstowego
-function exportToTxt() {
-    if (bazy_danych.length === 0) {
-        alert("Baza danych jest pusta.");
-        return;
-    }
-    let output = "Numer skrzynki\tTowar\tIlosc\r\n";
-    bazy_danych.forEach(item => {
-        output += `${item.drawer}\t${item.name}\t${item.qty}\r\n`;
-    });
-
-    const blob = new Blob([output], { type: "text/plain;charset=utf-8" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "baza.txt";
-    a.click();
-}
-
-// Ręczny import pliku przez użytkownika
-function importFromTxt(input) {
-    const file = input.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        parsujTxt(e.target.result);
-    };
-    reader.readAsText(file, "UTF-8");
-    input.value = "";
-}
+    // Wywołanie przy starcie
+    wczytajBazeNaStroneGlowna();
 </script>
+
 </body>
 </html>
