@@ -3,129 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Główny - Warsztat</title>
+    <title>Główny Panel Dowodzenia</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background: #0d1117; color: #c9d1d9; padding: 40px; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        h1 { font-size: 2.2rem; color: #f0f6fc; margin-bottom: 20px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-        h2 { font-size: 1.4rem; color: #f0f6fc; margin-bottom: 15px; }
+        body { background: #0d1117; color: #c9d1d9; display: flex; min-height: 100vh; }
+
+        /* Boczny Panel Nawigacyjny (Sidebar) */
+        .sidebar { width: 280px; background: #161b22; border-right: 1px solid #30363d; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .profile-area { text-align: center; margin-bottom: 30px; width: 100%; }
+        .avatar-frame { width: 150px; height: 180px; border: 3px solid #238636; border-radius: 8px; overflow: hidden; margin: 0 auto 15px; box-shadow: 0 0 15px rgba(35,134,54,0.3); }
+        .avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-area h2 { font-size: 1.2rem; color: #f0f6fc; margin-bottom: 5px; }
+        .status-online { color: #3fb950; font-size: 0.85rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .status-online::before { content: ''; width: 8px; height: 8px; background: #3fb950; border-radius: 50%; display: inline-block; }
+
+        /* Menu */
+        .menu-nav { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+        .menu-btn { width: 100%; padding: 12px 15px; background: transparent; border: 1px solid transparent; border-radius: 6px; color: #c9d1d9; text-align: left; font-size: 1rem; cursor: pointer; transition: all 0.2s; font-weight: 500; }
+        .menu-btn:hover { background: #21262d; border-color: #30363d; color: #58a6ff; }
+        .menu-btn.active { background: #1f6feb; color: white; border-color: #388bfd; }
+
+        /* Dane kontaktowe na dole sidebaru */
+        .sidebar-footer { margin-top: auto; width: 100%; padding-top: 20px; border-top: 1px solid #30363d; font-size: 0.85rem; color: #8b949e; }
+        .contact-info { margin-bottom: 15px; display: flex; flex-direction: column; gap: 5px; }
+        .contact-info span { color: #58a6ff; font-weight: bold; }
+
+        /* Crypto & Forex Widget */
+        .crypto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; font-family: monospace; }
+        .crypto-box { background: #0d1117; padding: 6px 4px; border-radius: 4px; border: 1px solid #30363d; text-align: center; font-size: 0.8rem; }
+
+        /* Główny Kontener Treści */
+        .main-content { flex: 1; padding: 40px; max-width: 1200px; margin: 0 auto; width: 100%; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+
+        /* Style dla kart i sekcji */
+        h1 { font-size: 2.2rem; color: #f0f6fc; margin-bottom: 25px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 25px; margin-bottom: 20px; }
+        .card h3 { color: #58a6ff; margin-bottom: 15px; font-size: 1.3rem; }
+        p { line-height: 1.6; color: #8b949e; margin-bottom: 15px; }
+        ul { margin-left: 20px; color: #8b949e; line-height: 1.8; }
         
-        /* Przyciski */
-        .btn { padding: 12px 20px; background: #238636; border: 1px solid rgba(240,246,252,0.1); color: #fff; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; transition: background 0.2s; }
-        .btn:hover { background: #2ea043; }
-        .btn-nav { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; margin-right: 10px; }
-        .btn-nav:hover { background: #30363d; color: #58a6ff; }
+        /* Licznik i Inputy */
+        .counter-val { font-size: 3rem; font-weight: bold; color: #ff7b72; font-family: monospace; margin: 10px 0; }
+        .excuse-box { min-height: 60px; background: #0d1117; border: 1px dashed #8b949e; border-radius: 6px; padding: 15px; display: flex; align-items: center; justify-content: center; font-style: italic; color: #58a6ff; margin-bottom: 15px; text-align: center; }
         
-        /* Statusy i Siatka Podglądu */
-        .status-box { padding: 10px; background: #0d1117; border-radius: 6px; border: 1px solid #30363d; margin-top: 15px; font-size: 0.9rem; color: #8b949e; }
-        .grid-podglad { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
-        .item-mini { background: #0d1117; border: 1px solid #30363d; padding: 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; }
-        .item-qty { color: #58a6ff; font-weight: bold; font-family: monospace; }
+        .input-dark { padding: 10px; background: #0d1117; color: #fff; border: 1px solid #30363d; border-radius: 6px; width: 100%; margin-bottom: 10px; }
+        .select-dark { padding: 10px; background: #0d1117; color: #fff; border: 1px solid #30363d; border-radius: 6px; width: 100%; margin-bottom: 10px; }
+        .btn { padding: 10px 20px; font-size: 0.95rem; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: background 0.2s; }
+        .btn-danger { background: #da3637; color: white; }
+        .btn-danger:hover { background: #b62324; }
+        .btn-action { background: #238636; color: white; }
+        .btn-action:hover { background: #1f6f39; }
+        .btn-blue { background: #1f6feb; color: white; }
+        .btn-blue:hover { background: #1158c7; }
+
+        /* Tabele i Listy */
+        .table-dark { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; }
+        .table-dark th, .table-dark td { border: 1px solid #30363d; padding: 10px; text-align: left; }
+        .table-dark th { background: #0d1117; color: #58a6ff; }
+        .task-list { list-style: none; margin: 15px 0 0 0; }
+        .task-item { display: flex; justify-content: space-between; align-items: center; background: #0d1117; padding: 10px; border-radius: 6px; margin-bottom: 8px; border: 1px solid #30363d; }
+        .task-done { text-decoration: line-through; color: #8b949e; opacity: 0.6; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🎛️ Panel Zarządzania Warsztatem</h1>
+    <div class="sidebar">
+        <div class="profile-area">
+            <div class="avatar-frame">
+                <img src="foto.jpg" alt="Marek">
+            </div>
+            <h2>Marek</h2>
+            <div class="status-online">Elektronik Aktywny</div>
+        </div>
 
-    <!-- Sekcja Kontrolna -->
-    <div class="card">
-        <h2>Nawigacja i Synchronizacja</h2>
-        <p style="margin-bottom: 15px; color: #8b949e;">Zarządzaj połączeniem z zewnętrzną bazą danych części.</p>
-        <a href="magazynek.html" class="btn btn-nav">📦 Otwórz Pełny Magazynek</a>
-        <button onclick="wymusAktualizacjeZGitHub()" class="btn">🔄 Synchronizuj z GitHub</button>
-        
-        <div id="syncStatus" class="status-box">Ładowanie bazy danych...</div>
-    </div>
+        <div class="menu-nav">
+            <button class="menu-btn active" onclick="switchTab('dom')">🏠 Dom (Pulpit)</button>
+            <button class="menu-btn" onclick="switchTab('omnie')">👤 O mnie</button>
+            <button class="menu-btn" onclick="switchTab('praca')">🛠️ Praca (UR)</button>
+            <button class="menu-btn" onclick="switchTab('elektronika')">⚡ Elektronika</button>
+            <button class="menu-btn" onclick="switchTab('magazynek')">📦 Magazynek</button>
+            <button class="menu-btn" onclick="switchTab('popracy')">⚙️ Po pracy / 3D</button>
+        </div>
 
-    <!-- Sekcja dynamicznego podglądu danych z GitHuba -->
-    <div class="card">
-        <h2>Szybki Podgląd Stanów (z pliku baza.json)</h2>
-        <div id="podgladZawartosci" class="grid-podglad">
-            <!-- Stare, fikcyjne dane zostały usunięte. Tutaj JS wstrzyknie dane z GitHuba -->
+        <div class="sidebar-footer">
+            <div class="contact-info">
+                <div>✉️ Mail: <span>sq4njx@o2.pl</span></div>
+                <div>📞 Tel: <span>603534917</span></div>
+            </div>
+            <div style="font-size: 0.8rem; border-top: 1px solid #30363d; padding-top: 10px;">
+                <p style="margin-bottom: 5px; font-weight: bold; color: #f0f6fc;">Kursy (Live):</p>
+                <div class="crypto-grid">
+                    <div class="crypto-box">BTC: <span id="btc-price" style="color:#58a6ff;">...</span></div>
+                    <div class="crypto-box">XMR: <span id="xmr-price" style="color:#58a6ff;">...</span></div>
+                    <div class="crypto-box">ETH: <span id="eth-price" style="color:#58a6ff;">...</span></div>
+                    <div class="crypto-box">USD: <span id="usd-price" style="color:#3fb950;">...</span></div>
+                </div>
+            </div>
+            <p style="font-size: 0.75rem; margin-top: 15px; text-align: center;">© 2026 Panel Dowodzenia</p>
         </div>
     </div>
-</div>
-
-<script>
-    // 1. WKLEJ TUTAJ SWÓJ LINK RAW Z GITHUB
-    const URL_BAZY = "https://raw.githubusercontent.com/TWÓJ_LOGIN/TWÓJ_REPOZYTORIUM/main/baza.json";
-
-    // Główna funkcja pobierająca i odświeżająca widok na stronie głównej
-    async function wczytajBazeNaStroneGlowna(wymus = false) {
-        const statusBox = document.getElementById("syncStatus");
-        let parts = [];
-
-        // Próba odczytu z localStorage, jeśli nie wymuszamy pobierania z sieci
-        if (!wymus && localStorage.getItem("magazynek_parts")) {
-            parts = JSON.parse(localStorage.getItem("magazynek_parts"));
-            statusBox.innerHTML = "✅ Załadowano aktualne dane z pamięci podręcznej.";
-            renderujPodglad(parts);
-            return;
-        }
-
-        try {
-            statusBox.innerHTML = "⏳ Pobieranie świeżych danych z GitHub...";
-            const odpowiedz = await fetch(URL_BAZY);
-            if (!odpowiedz.ok) throw new Error('Błąd pobierania pliku');
-            
-            parts = await odpowiedz.json();
-            
-            // Nadpisujemy lokalną pamięć rzeczywistymi danymi
-            localStorage.setItem("magazynek_parts", JSON.stringify(parts));
-            statusBox.innerHTML = `✅ Zsynchronizowano pomyślnie! Wczytano elementów: ${parts.length}.`;
-            
-            renderujPodglad(parts);
-        } catch (err) {
-            console.error(err);
-            statusBox.innerHTML = "❌ Błąd pobierania z GitHub. Używam ostatnich znanych danych.";
-            
-            // Awaryjne wyświetlenie tego co jest w pamięci
-            parts = JSON.parse(localStorage.getItem("magazynek_parts")) || [];
-            renderujPodglad(parts);
-        }
-    }
-
-    // Generowanie kafelków podglądu na bazie realnych danych
-    function renderujPodglad(listaCzesci) {
-        const kontener = document.getElementById("podgladZawartosci");
-        kontener.innerHTML = ""; // Czyszczenie widoku
-
-        if (listaCzesci.length === 0) {
-            kontener.innerHTML = "<p style='color: #8b949e; grid-column: 1/-1;'>Baza danych jest pusta lub nie została załadowana.</p>";
-            return;
-        }
-
-        // Wyświetlamy np. pierwsze 8 elementów jako szybki podgląd w panelu
-        const doWyswietlenia = listaCzesci.slice(0, 8);
-
-        doWyswietlenia.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "item-mini";
-            div.innerHTML = `
-                <span>${item.name}</span>
-                <span class="item-qty">${item.qty} szt.</span>
-            `;
-            kontener.appendChild(div);
-        });
-
-        if (listaCzesci.length > 8) {
-            const info = document.createElement("p");
-            info.style.cssText = "grid-column: 1/-1; color: #8b949e; font-size: 0.85rem; margin-top: 10px;";
-            info.innerHTML = `...oraz ${listaCzesci.length - 8} innych pozycji. Pełną listę znajdziesz w zakładce Magazynek.`;
-            kontener.appendChild(info);
-        }
-    }
-
-    function wymusAktualizacjeZGitHub() {
-        wczytajBazeZGitHubu(true); 
-    }
-
-    // Wywołanie przy starcie
-    wczytajBazeNaStroneGlowna();
-</script>
-
-</body>
-</html>
