@@ -1,0 +1,4 @@
+Maszyna	Objawy / Usterka	Rozwiązanie / Co sprawdzić
+Szafa CNC Lenze	Błąd enkodera, oś X stoi	Sprawdzić stabilność zasilania 24V, oczyścić złącze sygnałowe, zweryfikować stan ekranu kabla.
+Sterownik S7-1200	Czerwona dioda SF/DIAG	Podpiąć się przez TIA Portal, sprawdzić bufor diagnostyczny (Diagnostic Buffer) – prawdopodobnie błąd przepełnienia pamięci.
+Falownik Bosch Rexroth	Komunikat przeciążenia (OL)	Zmierzyć prąd cęgami na wyjściu UVW, sprawdzić opory mechaniczne na wale silnika, skontrolować stan łożysk.
