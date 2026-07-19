@@ -299,7 +299,7 @@ Szkrzynka 7	kontrolka do sprawdzenia napięcia	1
 Szkrzynka 7	stojak pod telefon	1
 Szkrzynka 77	dmuchawa ręczna	1
 Szkrzynka 7	Zasialcz 7,5v	1
-Szkrzynka 7	zasialcz 5v	2
+Szkrzynka 7	zasialcz 5v	1
 Szkrzynka 7	zasilacz 9v	2
 Szkrzynka 7	zasilacz nask	1
 Szkrzynka 7	do kopiowania danych ata sata +zasialcz	1
