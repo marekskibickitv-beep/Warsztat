@@ -358,45 +358,45 @@ Skrzynka 10	pilniki iglaki	8
 Skrzynka 10	kolanka miedziane	20
 Skrzynka 10	klej budapren	2
 Skrzynka 11	mikser +wzmacniacz 200w	1
-Skrzynka 11; końcówki do szczoteczki elektrycznej; 4 szt
-Skrzynka 12; mikroskop; 1 szt
-Skrzynka 12; kondensatory smd wszystkie rodzaje; 1000 szt
-Skrzynka 12; rezystory smd wszystkie rodzaje; 1000 szt
-Skrzynka 12; płyty mp3 (pozostałości z wesela); 1 kpl
-Skrzynka 12; masażer do ciała; 1 szt
-Skrzynka 12; stojak pod telefon; 1 szt
-Skrzynka 13; przewody do wody 3/4 i 1/2; 1 kpl
-Skrzynka 13; kółeczka do drzwi kabinowych; 1 kpl
-Skrzynka 13; gniazdko natynkowe; 1 szt
-Skrzynka 13; rura do zlewu z odejściem do zmywarki; 1 szt
-Skrzynka 13; rura 40mm długość 25cm; 1 szt
-Skrzynka 13; teflon; 1 szt
-Skrzynka 13; dratwa; 1 szt
-Skrzynka 13; bolce do półek; 1 kpl
-Skrzynka 13; wkładki do drzwi; 1 kpl
-Skrzynka 13; blaszki miedziane 0.5 i 1.3 mm; 1 kpl
-Skrzynka 13; rezystory i kondensatory smd; 1 kpl
-Skrzynka 13; aparat pro815 samsung; 1 szt
-Skrzynka 13; baterie 3xaaa i 2xaa; 1 kpl
-Skrzynka 13; ciśnieniomierz; 1 szt
-Skrzynka 13; miernik na rękę; 1 szt
-Skrzynka 13; miernik stacjonarny; 1 szt
-Skrzynka 14; rj 45 przelotowy kat6; 50 szt
-Skrzynka 14; anteny do wifi 2.4 ghz; 10 szt
-Skrzynka 14; modem na karty sim mobilny; 1 szt
-Skrzynka 14; suwmiarka; 1 szt
-Skrzynka 14; zapalniczka; 1 szt
-Skrzynka 14; baterie r20; 2 szt
-Skrzynka 14; klej dwuskładnikowy; 1 szt
-Skrzynka 14; latarka; 1 szt
-Skrzynka 14; ładowarka do tyt 750 wraz z zasilaczem; 1 szt
-Skrzynka 14; czujnik otwarcia okna; 1 szt
-Skrzynka 14; wąż do prysznica; 1 szt
-Skrzynka 14; obszycie kierownicy; 1 szt
-Skrzynka 14; blokady otwarcia okna; 2 szt
-Skrzynka 14; kalamitka fi6; 10 szt
-Skrzynka 14; starter; 1 szt
-Skrzynka 14; bandaż; 1 szt
-Skrzynka 14; narożniki do listew przy panelach; 10 szt
-Skrzynka 15; puste miejsce; 0 szt
+Skrzynka 11	końcówki do szczoteczki elektrycznej	4
+Skrzynka 12	mikroskop	1
+Skrzynka 12	kondensatory smd wszystkie rodzaje	1000
+Skrzynka 12	rezystory smd wszystkie rodzaje	1000
+Skrzynka 12	płyty mp3 (pozostałości z wesela)	1
+Skrzynka 12	masażer do ciała	1
+Skrzynka 12	stojak pod telefon	1
+Skrzynka 13	przewody do wody 3/4 i 1/2	1
+Skrzynka 13	kółeczka do drzwi kabinowych	1
+Skrzynka 13	gniazdko natynkowe	1
+Skrzynka 13	rura do zlewu z odejściem do zmywarki	1
+Skrzynka 13	rura 40mm długość 25cm	1
+Skrzynka 13	teflon	1
+Skrzynka 13	dratwa	1
+Skrzynka 13	bolce do półek	1
+Skrzynka 13	wkładki do drzwi	1
+Skrzynka 13	blaszki miedziane 0.5 i 1.3 mm	1
+Skrzynka 13	rezystory i kondensatory smd	1
+Skrzynka 13	aparat pro815 samsung	1
+Skrzynka 13	baterie 3xaaa i 2xaa	1
+Skrzynka 13	ciśnieniomierz	1
+Skrzynka 13	miernik na rękę	1
+Skrzynka 13	miernik stacjonarny	1
+Skrzynka 14	rj 45 przelotowy kat6	50
+Skrzynka 14	anteny do wifi 2.4 ghz	10
+Skrzynka 14	modem na karty sim mobilny	1
+Skrzynka 14	suwmiarka	1
+Skrzynka 14	zapalniczka	1
+Skrzynka 14	baterie r20	2
+Skrzynka 14	klej dwuskładnikowy	1
+Skrzynka 14	latarka	1
+Skrzynka 14	ładowarka do tyt 750 wraz z zasilaczem	1
+Skrzynka 14	czujnik otwarcia okna	1
+Skrzynka 14	wąż do prysznica	1
+Skrzynka 14	obszycie kierownicy	1
+Skrzynka 14	blokady otwarcia okna	2
+Skrzynka 14	kalamitka fi6	10
+Skrzynka 14	starter	1
+Skrzynka 14	bandaż	1
+Skrzynka 14	narożniki do listew przy panelach	10
+Skrzynka 15	puste miejsce	0
 
