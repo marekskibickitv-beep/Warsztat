@@ -358,7 +358,7 @@ Skrzynka 10	pilniki iglaki	8
 Skrzynka 10	kolanka miedziane	20
 Skrzynka 10	klej budapren	2
 Skrzynka 11	mikser +wzmacniacz 200w	1
-Skrzynka 11 końcówki do szczoteczki elektrycznej  4
+Skrzynka 11 końcówki do szczoteczki elektrycznej 4
 Skrzynka 12 mikroskop 
 Skrzynka 12 kondensatory smd wszystkie rodzaje po 1000 szt
 Skrzynka 12 rezystory smd wszystkie rodzaje po 1000 szt 
