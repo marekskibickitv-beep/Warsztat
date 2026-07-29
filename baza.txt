@@ -398,5 +398,6 @@ Skrzynka 14	kalamitka fi6	10
 Skrzynka 14	starter	1
 Skrzynka 14	bandaż	1
 Skrzynka 14	narożniki do listew przy panelach	10
-Skrzynka 14	serwer nas  1
+Skrzynka 14	serwer nas	1
+
 
